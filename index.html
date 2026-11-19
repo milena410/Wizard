@@ -5,14 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hogwarts Portalı</title>
   <style>
-    :root {
-      --bg-dark:#0e1017; --bg-card:#181b26; --bg-panel:#202433;
-      --gold:#d4af37; --gold-light:#f3d576; --text-main:#f0ece1;
-      --text-muted:#a6a295; --gryffindor:#ae0001; --gryffindor-sec:#eeba30;
-      --slytherin:#1a472a; --slytherin-sec:#aaaaaa; --ravenclaw:#0e1a40;
-      --ravenclaw-sec:#946b2d; --hufflepuff:#ecb939; --hufflepuff-sec:#372e29;
-      --border:rgba(212,175,55,.25);
-    }
+    :root{--bg-dark:#0e1017;--bg-card:#181b26;--bg-panel:#202433;--gold:#d4af37;--gold-light:#f3d576;--text-main:#f0ece1;--text-muted:#a6a295;--gryffindor:#ae0001;--gryffindor-sec:#eeba30;--slytherin:#1a472a;--slytherin-sec:#aaaaaa;--ravenclaw:#0e1a40;--ravenclaw-sec:#946b2d;--hufflepuff:#ecb939;--hufflepuff-sec:#372e29;--border:rgba(212,175,55,.25)}
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
     body{background:radial-gradient(circle at top,#1b2030 0%,#0b0d13 100%);color:var(--text-main);min-height:100vh;display:flex;flex-direction:column}
     header{background:rgba(14,16,23,.92);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
@@ -36,10 +29,9 @@
     .auth-switch{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:6px;border-radius:12px;background:#0b0d14;border:1px solid var(--border);margin-bottom:20px}.auth-switch button{background:transparent;color:var(--text-muted);padding:12px 8px}.auth-switch button.active{background:linear-gradient(135deg,#d4af37,#a9811c);color:#15120a;box-shadow:0 4px 16px rgba(212,175,55,.2)}
     .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:18px;background:var(--bg-dark);padding:6px;border-radius:10px;border:1px solid var(--border)}
     .tab-btn{background:transparent;color:var(--text-muted);padding:10px 6px;border-radius:8px;font-size:.82rem}.tab-btn.active{background:var(--bg-panel);color:var(--gold);border:1px solid var(--border)}
-    .auth-form{animation:fadeIn .25s ease}.form-group{margin-bottom:14px}.form-group label{font-weight:600}.login-card input,.login-card select{background:rgba(8,10,16,.85);border-color:rgba(212,175,55,.24)}.login-card input:focus,.login-card select:focus{box-shadow:0 0 0 3px rgba(212,175,55,.1)}
+    .auth-form{animation:fadeIn .25s ease}.form-group{margin-bottom:14px}.form-group label{display:block;margin-bottom:6px;font-size:.85rem;color:var(--text-muted);font-weight:600}.login-card input,.login-card select{background:rgba(8,10,16,.85);border-color:rgba(212,175,55,.24)}.login-card input:focus,.login-card select:focus{box-shadow:0 0 0 3px rgba(212,175,55,.1)}
     .login-submit{width:100%;margin-top:7px;padding:14px;text-transform:uppercase;letter-spacing:1.2px;font-size:.9rem;box-shadow:0 8px 22px rgba(212,175,55,.18)}.auth-note{color:var(--text-muted);font-size:.75rem;text-align:center;line-height:1.5;margin-top:15px}
     @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-    .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:6px;font-size:.85rem;color:var(--text-muted)}
     input,select,textarea{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-dark);color:var(--text-main);font-size:.95rem;outline:none}
     input:focus,select:focus,textarea:focus{border-color:var(--gold)}
     .alert-box{padding:12px;border-radius:8px;font-size:.85rem;margin-bottom:16px;display:none}
@@ -61,412 +53,436 @@
     .panel h3{color:var(--gold);margin-bottom:16px;font-size:1.15rem;border-bottom:1px solid var(--border);padding-bottom:10px}
     .feed-list{display:flex;flex-direction:column;gap:12px;max-height:360px;overflow-y:auto}
     .feed-item{background:var(--bg-panel);padding:12px 14px;border-radius:10px;border-left:3px solid var(--gold);font-size:.9rem}
-    .feed-meta{font-size:.75rem;color:var(--text-muted);margin-top:4px}.plus-pts{color:#2ecc71;font-weight:700}.minus-pts{color:#ff7675;font-weight:700}
+    .feed-meta{font-size:.75rem;color:var(--text-muted);margin-top:4px}
     table{width:100%;border-collapse:collapse;margin-top:10px}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--border);font-size:.9rem}
     th{color:var(--gold);background:var(--bg-panel)}
     .common-room-banner{padding:20px;border-radius:14px;margin-bottom:20px;border:1px solid var(--border)}
     .banner-Gryffindor{background:linear-gradient(135deg,rgba(174,0,1,.35),rgba(24,27,38,.95))}.banner-Slytherin{background:linear-gradient(135deg,rgba(26,71,42,.45),rgba(24,27,38,.95))}
     .banner-Ravenclaw{background:linear-gradient(135deg,rgba(14,26,64,.55),rgba(24,27,38,.95))}.banner-Hufflepuff{background:linear-gradient(135deg,rgba(236,185,57,.25),rgba(24,27,38,.95))}
-    #loader{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;justify-content:center;align-items:center;z-index:9999}
-    .loader-box{background:var(--bg-card);border:1px solid var(--border);padding:24px 34px;border-radius:14px;color:var(--gold-light)}
-    @media(max-width:820px){.login-layout{grid-template-columns:1fr}.login-showcase{min-height:310px}.showcase-title{font-size:2.6rem}}
-    @media(max-width:480px){header{padding:14px}.brand h1{font-size:1.1rem}#portal-screen{padding:14px}.panel{padding:16px}.tabs{gap:3px}.tab-btn{font-size:.72rem;padding:9px 3px}}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="brand"><span style="font-size:1.8rem">⚡</span><h1>Hogwarts Portalı</h1></div>
-    <div class="user-info" id="header-user" style="display:none">
-      <span class="sync-badge offline" id="sync-status">● Bağlantı kontrol ediliyor</span>
-      <span class="role-badge" id="user-role-label"></span>
-      <button class="btn-secondary" onclick="logout()">Çıkış Yap</button>
-    </div>
-  </header>
-  <div id="loader"><div class="loader-box">🪄 Büyüler hazırlanıyor...</div></div>
-  <main id="login-screen">
-    <div class="login-layout">
-      <section class="login-showcase">
-        <div><div class="crest">🏰</div><div class="showcase-kicker">Hogwarts Cadılık ve Büyücülük Okulu</div><h2 class="showcase-title">Büyü Dünyasına<br>Hoş Geldin.</h2><p class="showcase-copy">Kadim koridorların, dört büyük binanın ve keşfedilmeyi bekleyen sırların kapısı seni bekliyor. Hogwarts yolculuğun şimdi başlıyor.</p></div>
-        <div class="showcase-foot">“Her zaman merakını ve cesaretini yanında taşı.”</div>
-      </section>
-      <section class="login-card">
-        <div class="login-header"><h2 id="auth-title">Büyük Kapı Seni Bekliyor</h2><p id="auth-subtitle">Hogwarts hesabına giriş yap ve büyülü dünyaya katıl.</p></div>
-        <div class="auth-switch"><button type="button" id="mode-login" class="active" onclick="switchAuthMode('login')">Giriş Yap</button><button type="button" id="mode-register" onclick="switchAuthMode('register')">Kayıt Ol</button></div>
-        <div id="login-panel" class="auth-form">
-          <div class="tabs">
-            <button type="button" class="tab-btn active" id="tab-student" onclick="switchRoleTab('student')">🎓 Öğrenci</button>
-            <button type="button" class="tab-btn" id="tab-professor" onclick="switchRoleTab('professor')">🪄 Profesör</button>
-            <button type="button" class="tab-btn" id="tab-admin" onclick="switchRoleTab('admin')">👑 Yönetici</button>
-          </div>
-          <div class="alert-box alert-error" id="login-error"></div><div class="alert-box alert-info" id="admin-setup-notice"></div>
-          <form id="login-form" onsubmit="handleLogin(event)">
-            <div class="form-group"><label for="login-username">Kullanıcı Adı</label><input type="text" id="login-username" required autocomplete="username" placeholder="Kullanıcı adın"></div>
-            <div class="form-group" id="house-select-group"><label for="login-house">Bina Seçimi</label><select id="login-house"><option value="Gryffindor">🦁 Gryffindor</option><option value="Slytherin">🐍 Slytherin</option><option value="Ravenclaw">🦅 Ravenclaw</option><option value="Hufflepuff">🦡 Hufflepuff</option></select></div>
-            <div class="form-group"><label for="login-password">Özel Şifre</label><input type="password" id="login-password" required autocomplete="current-password" placeholder="Şifren"></div>
-            <button type="submit" class="btn-gold login-submit" id="login-submit-btn">✨ Kapıyı Aç</button>
-          </form>
-        </div>
-        <div id="register-panel" class="auth-form" style="display:none">
-          <div class="alert-box alert-error" id="register-error"></div>
-          <form id="register-form" onsubmit="handleRegister(event)">
-            <div class="form-group"><label for="register-role">Hesap Türü</label><select id="register-role" onchange="toggleRegisterHouse()"><option value="student">🎓 Öğrenci</option><option value="professor">🪄 Profesör</option></select></div>
-            <div class="form-group"><label for="register-username">Kullanıcı Adı</label><input type="text" id="register-username" required minlength="3" maxlength="24" autocomplete="username" placeholder="En az 3 karakter"></div>
-            <div class="form-group" id="register-house-group"><label for="register-house">Binanı Seç</label><select id="register-house"><option value="Gryffindor">🦁 Gryffindor</option><option value="Slytherin">🐍 Slytherin</option><option value="Ravenclaw">🦅 Ravenclaw</option><option value="Hufflepuff">🦡 Hufflepuff</option></select></div>
-            <div class="form-group"><label for="register-password">Şifre Oluştur</label><input type="password" id="register-password" required minlength="4" autocomplete="new-password" placeholder="En az 4 karakter"></div>
-            <div class="form-group"><label for="register-password-confirm">Şifreyi Tekrarla</label><input type="password" id="register-password-confirm" required minlength="4" autocomplete="new-password" placeholder="Şifreni tekrar yaz"></div>
-            <button type="submit" class="btn-gold login-submit">🪄 Hogwarts'a Katıl</button>
-          </form>
-          <p class="auth-note">Yönetici hesapları kayıt ekranından oluşturulamaz. Bu portal rol yapma amaçlıdır; başka hesaplarda kullandığın şifreleri kullanma.</p>
-        </div>
-        <p class="auth-note" id="login-note">Hesabın yok mu? Kayıt Ol seçeneğiyle yeni bir öğrenci veya profesör hesabı oluşturabilirsin.</p>
-      </section>
-    </div>
-             </main>
-               <main id="portal-screen">
-    <nav class="nav-bar">
-      <button class="nav-btn active" onclick="showSection('great-hall',this)">🕯️ Büyük Salon & Puanlar</button>
-      <button class="nav-btn" onclick="showSection('common-room',this)">🔥 Ortak Salon</button>
-      <button class="nav-btn" onclick="showSection('classes',this)">📜 Ders Programı</button>
-      <button class="nav-btn" id="nav-prof-panel" style="display:none" onclick="showSection('prof-panel',this)">⚖️ Puan & Duyuru Yönetimi</button>
-      <button class="nav-btn" id="nav-admin-panel" style="display:none" onclick="showSection('admin-panel',this)">👑 Yönetici Hesap Kontrolü</button>
-    </nav>
+#loader{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;justify-content:center;align-items:center;z-index:9999}
+.loader-box{background:var(--bg-card);border:1px solid var(--border);padding:24px 34px;border-radius:14px;color:var(--gold-light)}
+@media(max-width:820px){.login-layout{grid-template-columns:1fr}.login-showcase{min-height:310px}.showcase-title{font-size:2.6rem}}
+@media(max-width:480px){header{padding:14px}.brand h1{font-size:1.1rem}#portal-screen{padding:14px}.panel{padding:16px}.tabs{gap:3px}.tab-btn{font-size:.72rem;padding:9px 3px}}
 
-    <section id="sec-great-hall" class="section-view active">
-      <div class="houses-grid" id="houses-container"></div>
-      <div class="two-col">
-        <div class="panel"><h3>⏳ Son Bina Puan Hareketleri</h3><div class="feed-list" id="logs-container"></div></div>
-        <div class="panel"><h3>🦉 Büyük Salon Duyuruları</h3><div class="feed-list" id="announcements-container"></div></div>
-      </div>
-    </section>
+⚡Hogwarts Portalı
 
-    <section id="sec-common-room" class="section-view">
-      <div id="common-room-switcher" style="margin-bottom:16px;display:none">
-        <label style="color:var(--gold);margin-right:10px">Ziyaret Edilecek Ortak Salon:</label>
-        <select id="admin-room-select" style="width:auto;display:inline-block" onchange="renderCommonRoom()">
-          <option value="Gryffindor">🦁 Gryffindor Ortak Salonu</option>
-          <option value="Slytherin">🐍 Slytherin Ortak Salonu</option>
-          <option value="Ravenclaw">🦅 Ravenclaw Ortak Salonu</option>
-          <option value="Hufflepuff">🦡 Hufflepuff Ortak Salonu</option>
-        </select>
-      </div>
-      <div class="common-room-banner" id="room-banner">
-        <h2 id="room-title" style="color:var(--gold-light);margin-bottom:6px"></h2>
-        <p id="room-desc" style="color:var(--text-muted);font-size:.9rem"></p>
-      </div>
-      <div class="two-col">
-        <div class="panel">
-          <h3>💬 Ortak Salon Sohbet Panosu</h3>
-          <div class="feed-list" id="room-messages" style="margin-bottom:16px"></div>
-          <form onsubmit="sendRoomMessage(event)" style="display:flex;gap:10px">
-            <input type="text" id="room-msg-input" placeholder="Bina arkadaşlarına mesaj yaz..." required>
-            <button type="submit" class="btn-gold">Gönder</button>
-          </form>
-        </div>
-        <div class="panel"><h3>🧙 Bina Üyeleri</h3><div class="feed-list" id="room-members"></div></div>
-      </div>
-    </section>
+● Bağlantı kontrol ediliyor
 
-    <section id="sec-classes" class="section-view">
-      <div class="panel">
-        <h3>📚 Haftalık Hogwarts Ders Programı</h3>
-        <table>
-          <thead><tr><th>Gün</th><th>Ders Adı</th><th>Konum</th><th>Saat</th></tr></thead>
-          <tbody>
-            <tr><td>Pazartesi</td><td>Karanlık Sanatlara Karşı Savunma</td><td>3. Kat Sınıfı</td><td>19.00</td></tr>
-            <tr><td>Salı</td><td>İksir</td><td>Zindanlar</td><td>19.00</td></tr>
-            <tr><td>Çarşamba</td><td>Biçim Değiştirme</td><td>Avlu Kanadı</td><td>19.00</td></tr>
-            <tr><td>Perşembe</td><td>Tılsımlar</td><td>Tılsım Koridoru</td><td>19.00</td></tr>
-            <tr><td>Cuma</td><td>Uçuş ve Süpürge Eğitimi</td><td>Çim Saha</td><td>19.00</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+Çıkış Yap
 
-    <section id="sec-prof-panel" class="section-view">
-      <div class="two-col">
-        <div class="panel">
-          <h3>⚖️ Bina Puanı Ekle / Düş</h3>
-          <form onsubmit="updateHousePoints(event)">
-            <div class="form-group"><label>Bina Seçin</label>
-              <select id="pts-house">
-                <option value="Gryffindor">🦁 Gryffindor</option>
-                <option value="Slytherin">🐍 Slytherin</option>
-                <option value="Ravenclaw">🦅 Ravenclaw</option>
-                <option value="Hufflepuff">🦡 Hufflepuff</option>
-              </select>
-            </div>
-            <div class="form-group"><label>Puan Miktarı (Düşmek için başına - koyun, örn: -20 veya 50)</label><input type="number" id="pts-amount" required></div>
-            <div class="form-group"><label>Gerekçe / Öğrenci Adı</label><input type="text" id="pts-reason" required></div>
-            <button type="submit" class="btn-gold" style="width:100%">Puanı Uygula</button>
-          </form>
-        </div>
-        <div class="panel">
-          <h3>📢 Büyük Salona Duyuru Yayınla</h3>
-          <form onsubmit="postAnnouncement(event)">
-            <div class="form-group"><label>Duyuru Başlığı</label><input type="text" id="ann-title" required></div>
-            <div class="form-group"><label>Duyuru İçeriği</label><textarea id="ann-body" rows="4" required></textarea></div>
-            <button type="submit" class="btn-gold" style="width:100%">Duyuruyu Yayınla</button>
-          </form>
-        </div>
-      </div>
-    </section>
 
-    <section id="sec-admin-panel" class="section-view">
-      <div class="two-col">
-        <div class="panel">
-          <h3>➕ Yeni Öğrenci / Profesör Ekle</h3>
-          <form onsubmit="createNewUser(event)">
-            <div class="form-group"><label>Hesap Türü</label>
-              <select id="new-user-role" onchange="toggleNewUserHouse()">
-                <option value="student">🎓 Öğrenci</option>
-                <option value="professor">🪄 Profesör</option>
-              </select>
-            </div>
-            <div class="form-group"><label>Kullanıcı Adı</label><input type="text" id="new-user-name" required></div>
-            <div class="form-group" id="new-user-house-group">
-              <label>Bina</label>
-              <select id="new-user-house">
-                <option value="Gryffindor">🦁 Gryffindor</option>
-                <option value="Slytherin">🐍 Slytherin</option>
-                <option value="Ravenclaw">🦅 Ravenclaw</option>
-                <option value="Hufflepuff">🦡 Hufflepuff</option>
-              </select>
-            </div>
-            <div class="form-group"><label>Kişiye Özel Şifre</label><input type="password" id="new-user-pass" required></div>
-            <button type="submit" class="btn-gold" style="width:100%">Hesabı Oluştur</button>
-          </form>
-        </div>
-        <div class="panel">
-          <h3>📋 Kayıtlı Tüm Hesaplar</h3>
-          <div style="overflow-x:auto">
-            <table><thead><tr><th>Kullanıcı</th><th>Rol / Bina</th><th>İşlem</th></tr></thead><tbody id="users-table-body"></tbody></table>
-          </div>
-          <p style="font-size:.75rem;color:var(--text-muted);margin-top:10px">Not: Bu portal rol yapma amaçlıdır; gerçek veya başka hesaplarda kullandığınız şifreleri kullanmayın.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+🪄 Büyüler hazırlanıyor...
 
-<script>
+🏰Hogwarts Cadılık ve Büyücülük OkuluBüyü Dünyasına
+Hoş Geldin.Kadim koridorların, dört büyük binanın ve keşfedilmeyi bekleyen sırların kapısı seni bekliyor. Hogwarts yolculuğun şimdi başlıyor.
+“Her zaman merakını ve cesaretini yanında taşı.”
+Büyük Kapı Seni BekliyorHogwarts hesabına giriş yap ve büyülü dünyaya katıl.
+Giriş YapKayıt Ol
+
+
+🎓 Öğrenci
+🪄 Profesör
+👑 Yönetici
+
+
+
+Kullanıcı Adı
+Bina Seçimi🦁 Gryffindor🐍 Slytherin🦅 Ravenclaw🦡 Hufflepuff
+Özel Şifre
+✨ Kapıyı Aç
+
+
+
+
+
+Hesap Türü🎓 Öğrenci🪄 Profesör
+Kullanıcı Adı
+Binanı Seç🦁 Gryffindor🐍 Slytherin🦅 Ravenclaw🦡 Hufflepuff
+Şifre Oluştur
+Şifreyi Tekrarla
+🪄 Hogwarts'a Katıl
+
+Yönetici hesapları kayıt ekranından oluşturulamaz. Bu portal rol yapma amaçlıdır; başka hesaplarda kullandığın şifreleri kullanma.
+
+Hesabın yok mu? Kayıt Ol seçeneğiyle yeni bir öğrenci veya profesör hesabı oluşturabilirsin.
+
+🕯️ Büyük Salon & Puanlar
+🔥 Ortak Salon
+📜 Ders Programı
+⚖️ Puan & Duyuru Yönetimi
+👑 Yönetici Hesap Kontrolü
+⏳ Son Bina Puan Hareketleri
+🦉 Büyük Salon Duyuruları
+Ziyaret Edilecek Ortak Salon:
+🦁 Gryffindor Ortak Salonu
+🐍 Slytherin Ortak Salonu
+🦅 Ravenclaw Ortak Salonu
+🦡 Hufflepuff Ortak Salonu
+💬 Ortak Salon Sohbet Panosu
+
+
+
+Gönder
+
+
+🧙 Bina Üyeleri
+📚 Haftalık Hogwarts Ders Programı
+
+Gün	Ders Adı	Konum	Saat
+Pazartesi
+	Karanlık Sanatlara Karşı Savunma	1. Kat Sınıfı
+	19.00
+Salı
+	İksir	Zindanlar	19.00
+Çarşamba
+	Biçim Değiştirme	Avlu Kanadı	19.00
+Perşembe
+	Tılsımlar	Tılsım Koridoru	19.00
+Cuma
+	Uçuş ve Süpürge Eğitimi	Çim Saha	19.00
+
+⚖️ Bina Puanı Ekle / Düş
+
+Bina Seçin
+
+🦁 Gryffindor
+🐍 Slytherin
+🦅 Ravenclaw
+🦡 Hufflepuff
+
+
+Puan Miktarı (Düşmek için başına - koyun, örn: -20 veya 50)
+Gerekçe / Öğrenci Adı
+Puanı Uygula
+
+
+
+📢 Büyük Salona Duyuru Yayınla
+
+Duyuru Başlığı
+Duyuru İçeriği
+Duyuruyu Yayınla
+
+
+➕ Yeni Öğrenci / Profesör Ekle
+
+Hesap Türü
+
+🎓 Öğrenci
+🪄 Profesör
+
+
+Kullanıcı Adı
+Bina
+🦁 Gryffindor
+🐍 Slytherin
+🦅 Ravenclaw
+🦡 Hufflepuff
+
+
+Kişiye Özel Şifre
+Hesabı Oluştur
+
+
+
+📋 Kayıtlı Tüm Hesaplar
+
+Kullanıcı	Rol / Bina	İşlem
+
+Not: Bu portal rol yapma amaçlıdır; gerçek veya başka hesaplarda kullandığınız şifreleri kullanmayın.
 "use strict";
-
-const CLOUD_BUCKET = "hogwarts_wizardrp_portal_v2_2026_99481";
-const CLOUD_URL = `https://kvdb.io/A9x7K2mP8qR4vW1zL5nT/${CLOUD_BUCKET}`;
-const LOCAL_KEY = "hogwarts_portal_cache_v2";
-const HOUSES = ["Gryffindor","Slytherin","Ravenclaw","Hufflepuff"];
-
-let currentRoleTab = "student";
-let currentAuthMode = "login";
-let currentUser = null;
-let cloudReady = false;
-let saveInProgress = false;
-let pendingSave = Promise.resolve();
-
-const defaultState = () => ({
-  adminLocked:false,
-  adminAccount:null,
-  users:[],
-  points:{Gryffindor:100,Slytherin:100,Ravenclaw:100,Hufflepuff:100},
-  logs:[{text:"Yeni dönem başladı, tüm binalara 100 başlangıç puanı verildi.",time:"Dönem Başlangıcı"}],
-  announcements:[{title:"Hogwarts'a Hoş Geldiniz",body:"Bina puanları Büyük Salon üzerinden takip edilmektedir.",author:"Okul Yönetimi",time:"Genel"}],
-  messages:{Gryffindor:[],Slytherin:[],Ravenclaw:[],Hufflepuff:[]}
+const CLOUD_BUCKET="hogwarts_wizardrp_portal_v2_2026_99481";
+const CLOUD_URL=https://kvdb.io{CLOUD_BUCKET};
+const LOCAL_KEY="hogwarts_portal_cache_v2";
+const HOUSES=["Gryffindor","Slytherin","Ravenclaw","Hufflepuff"];
+let currentRoleTab="student";
+let currentAuthMode="login";
+let currentUser=null;
+let cloudReady=false;
+let pendingSave=Promise.resolve();
+const defaultState=()=>({
+adminLocked:false,
+adminAccount:null,
+users:[],
+points:{Gryffindor:100,Slytherin:100,Ravenclaw:100,Hufflepuff:100},
+logs:[{text:"Yeni dönem başladı, tüm binalara 100 başlangıç puanı verildi.",time:"Dönem Başlangıcı"}],
+announcements:[{title:"Hogwarts'a Hoş Geldiniz",body:"Bina puanları Büyük Salon üzerinden takip edilmektedir.",author:"Okul Yönetimi",time:"Genel"}],
+messages:{Gryffindor:[],Slytherin:[],Ravenclaw:[],Hufflepuff:[]}
 });
-
-let appState = defaultState();
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[ch]);
+let appState=defaultState();
+function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&","<":"<",">":">",'"':""","'":"'"})[c]);}
+function setSyncStatus(t,off=false){const e=document.getElementById("sync-status");e.textContent=t;e.classList.toggle("offline",off);}
+function showLoader(s){document.getElementById("loader").style.display=s?"flex":"none";}
+function normalizeState(data){
+const base=defaultState();
+if(!data||typeof data!=="object"||Array.isArray(data)) throw new Error("Geçersiz veri");
+const n={...base,...data};
+n.adminLocked=Boolean(data.adminLocked);
+n.adminAccount=data.adminAccount&&typeof data.adminAccount==="object"?data.adminAccount:null;
+n.users=Array.isArray(data.users)?data.users:[];
+n.points={...base.points,...(data.points&&typeof data.points==="object"?data.points:{})};
+n.logs=Array.isArray(data.logs)?data.logs:[];
+n.announcements=Array.isArray(data.announcements)?data.announcements:[];
+n.messages={...base.messages,...(data.messages&&typeof data.messages==="object"?data.messages:{})};
+HOUSES.forEach(h=>{if(!Array.isArray(n.messages[h]))n.messages[h]=[];});
+return n;
 }
-
-function setSyncStatus(text, offline=false) {
-  const el=document.getElementById("sync-status");
-  el.textContent=text;
-  el.classList.toggle("offline",offline);
+function loadLocalState(){
+try{const r=localStorage.getItem(LOCAL_KEY);if(!r)return false;appState=normalizeState(JSON.parse(r));return true;}
+catch(e){return false;}
 }
-
-function showLoader(show) {
-  document.getElementById("loader").style.display=show?"flex":"none";
+async function loadCloudState(){
+try{
+const res=await fetch(CLOUD_URL,{method:"GET",cache:"no-store"});
+if(!res.ok)throw new Error(res.status);
+appState=normalizeState(await res.json());
+localStorage.setItem(LOCAL_KEY,JSON.stringify(appState));
+cloudReady=true;
+setSyncStatus("● Bulut bağlantısı aktif",false);
+}catch(e){
+cloudReady=false;
+const had=loadLocalState();
+setSyncStatus(had?"● Yerel kayıt (çevrimdışı)":"● Bulut bağlantısı yok",true);
+if(!had)appState=defaultState();
 }
-
-function normalizeState(data) {
-  const base=defaultState();
-  if(!data || typeof data!=="object" || Array.isArray(data)) throw new Error("Bulut verisi geçersiz.");
-  const normalized={...base,...data};
-  normalized.adminLocked=Boolean(data.adminLocked);
-  normalized.adminAccount=data.adminAccount && typeof data.adminAccount==="object" ? data.adminAccount : null;
-  normalized.users=Array.isArray(data.users)?data.users:[];
-  normalized.points={...base.points,...(data.points && typeof data.points==="object"?data.points:{})};
-  normalized.logs=Array.isArray(data.logs)?data.logs:[];
-  normalized.announcements=Array.isArray(data.announcements)?data.announcements:[];
-  normalized.messages={...base.messages,...(data.messages && typeof data.messages==="object"?data.messages:{})};
-  HOUSES.forEach(h=>{if(!Array.isArray(normalized.messages[h])) normalized.messages[h]=[];});
-  return normalized;
+updateAdminNotice();
+if(currentUser)refreshAllViews();
+return cloudReady;
 }
-
-function loadLocalState() {
-  try {
-    const raw=localStorage.getItem(LOCAL_KEY);
-    if(!raw) return false;
-    appState=normalizeState(JSON.parse(raw));
-    return true;
-  } catch(err) {
-    console.warn("Yerel kayıt okunamadı:",err);
-    return false;
-  }
+async function saveCloudState(){
+const snap=JSON.stringify(appState);
+try{localStorage.setItem(LOCAL_KEY,snap);}catch(e){}
+pendingSave=pendingSave.then(async()=>{
+const r=await fetch(CLOUD_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:snap});
+if(!r.ok)throw new Error(r.status);
+cloudReady=true;
+setSyncStatus("● Bulut bağlantısı aktif",false);
+return true;
+}).catch(e=>{
+cloudReady=false;
+setSyncStatus("● Yerel kayıt (buluta gönderilemedi)",true);
+return false;
+});
+return pendingSave;
 }
-
-async function loadCloudState() {
-  try {
-    const res=await fetch(CLOUD_URL,{method:"GET",cache:"no-store"});
-    if(!res.ok) throw new Error(`Bulut sunucusu HTTP ${res.status} yanıtı verdi.`);
-    const data=await res.json();
-    appState=normalizeState(data);
-    localStorage.setItem(LOCAL_KEY,JSON.stringify(appState));
-    cloudReady=true;
-    setSyncStatus("● Bulut bağlantısı aktif",false);
-  } catch(err) {
-    cloudReady=false;
-    const hadCache=loadLocalState();
-    setSyncStatus(hadCache?"● Yerel kayıt (çevrimdışı)":"● Bulut bağlantısı yok",true);
-    console.warn("Bulut verisi alınamadı:",err);
-    if(!hadCache) appState=defaultState();
-  }
-  updateAdminNotice();
-  if(currentUser) refreshAllViews();
-  return cloudReady;
+function showAlert(id,msg){const e=document.getElementById(id);e.textContent=msg;e.style.display="block";}
+function hideAlert(id){const e=document.getElementById(id);e.textContent="";e.style.display="none";}
+function updateAdminNotice(){
+const n=document.getElementById("admin-setup-notice");
+if(!n)return;
+if(!appState.adminLocked){
+n.textContent="İlk yönetici hesabı bu bölümden oluşturulabilir.";
+n.style.display=currentRoleTab==="admin"&&currentAuthMode==="login"?"block":"none";
+}else n.style.display="none";
 }
-
-async function saveCloudState() {
-  const snapshot=JSON.stringify(appState);
-  try {
-    localStorage.setItem(LOCAL_KEY,snapshot);
-  } catch(err) {
-    console.warn("Yerel kayıt yazılamadı:",err);
-  }
-  pendingSave = pendingSave.then(async () => {
-    const response = await fetch(CLOUD_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:snapshot
-    });
-    if(!response.ok) throw new Error(`Bulut sunucusu HTTP ${response.status} yanıtı verdi.`);
-    cloudReady=true;
-    setSyncStatus("● Bulut bağlantısı aktif",false);
-    return true;
-  }).catch(err=>{
-    cloudReady=false;
-    setSyncStatus("● Yerel kayıt (buluta gönderilemedi)",true);
-    console.warn("Bulut kaydı başarısız:",err);
-    return false;
-  });
-  return pendingSave;
+function switchAuthMode(m){
+currentAuthMode=m;
+document.getElementById("login-panel").style.display=m==="login"?"block":"none";
+document.getElementById("register-panel").style.display=m==="register"?"block":"none";
+document.getElementById("mode-login").classList.toggle("active",m==="login");
+document.getElementById("mode-register").classList.toggle("active",m==="register");
+document.getElementById("auth-title").textContent=m==="login"?"Büyük Kapı Seni Bekliyor":"Hogwarts'a Katıl";
+document.getElementById("auth-subtitle").textContent=m==="login"?"Hogwarts hesabına giriş yap ve büyülü dünyaya katıl.":"Kendi büyülü kimliğini oluştur.";
+document.getElementById("login-note").textContent=m==="login"?"Hesabın yok mu? Kayıt Ol seçeneğiyle yeni bir öğrenci veya profesör hesabı oluşturabilirsin.":"Zaten hesabın var mı? Giriş Yap seçeneğine dokun.";
+hideAlert("login-error");hideAlert("register-error");updateAdminNotice();
+          }function switchRoleTab(r){
+currentRoleTab=r;
+["student","professor","admin"].forEach(x=>document.getElementById(tab-${x}).classList.toggle("active",x===r));
+document.getElementById("house-select-group").style.display=r==="student"?"block":"none";
+document.getElementById("login-submit-btn").textContent=r==="admin"&&!appState.adminLocked?"👑 Yönetici Oluştur":"✨ Kapıyı Aç";
+updateAdminNotice();
 }
-
-function showAlert(id,message) {
-  const el=document.getElementById(id);
-  el.textContent=message;
-  el.style.display="block";
+function toggleRegisterHouse(){
+document.getElementById("register-house-group").style.display=document.getElementById("register-role").value==="student"?"block":"none";
 }
-
-function hideAlert(id) {
-  const el=document.getElementById(id);
-  el.textContent="";
-  el.style.display="none";
+async function handleRegister(e){
+e.preventDefault();hideAlert("register-error");
+const role=document.getElementById("register-role").value;
+const username=document.getElementById("register-username").value.trim();
+const house=document.getElementById("register-house").value;
+const password=document.getElementById("register-password").value;
+const confirmPassword=document.getElementById("register-password-confirm").value;
+if(!/^[a-zA-Z0-9_çÇğĞıİöÖşŞüÜ-]{3,24}$/.test(username)){showAlert("register-error","Kullanıcı adı 3-24 karakter olmalı; harf, rakam, _ veya - kullanabilirsin.");return;}
+if(password.length<4){showAlert("register-error","Şifre en az 4 karakter olmalı.");return;}
+if(password!==confirmPassword){showAlert("register-error","Şifreler eşleşmiyor.");return;}
+const exists=appState.users.some(u=>String(u.username).toLowerCase()===username.toLowerCase())||(appState.adminAccount&&String(appState.adminAccount.username).toLowerCase()===username.toLowerCase());
+if(exists){showAlert("register-error","Bu kullanıcı adı zaten kullanılıyor.");return;}
+const newUser={id:Date.now(),role,username,house:role==="student"?house:null,password};
+appState.users.push(newUser);
+showLoader(true);const saved=await saveCloudState();showLoader(false);
+if(!saved){
+appState.users=appState.users.filter(u=>!==);
+try{localStorage.setItem(LOCAL_KEY,JSON.stringify(appState));}catch(_){}
+showAlert("register-error","Buluta kayıt yapılamadı. İnternet bağlantısını kontrol edip tekrar dene.");return;
 }
-
-function updateAdminNotice() {
-  const notice=document.getElementById("admin-setup-notice");
-  if(!notice) return;
-  if(!appState.adminLocked) {
-    notice.textContent="İlk yönetici hesabı bu bölümden oluşturulabilir.";
-    notice.style.display=currentRoleTab==="admin" && currentAuthMode==="login"?"block":"none";
-  } else {
-    notice.style.display="none";
-  }
+document.getElementById("register-form").reset();
+alert("Hesabın oluşturuldu! Şimdi giriş yapabilirsin.");
+switchAuthMode("login");switchRoleTab(role);
+document.getElementById("login-username").value=username;
+if(role==="student")document.getElementById("login-house").value=house;
 }
-
-function switchAuthMode(mode) {
-  currentAuthMode=mode;
-  document.getElementById("login-panel").style.display=mode==="login"?"block":"none";
-  document.getElementById("register-panel").style.display=mode==="register"?"block":"none";
-  document.getElementById("mode-login").classList.toggle("active",mode==="login");
-  document.getElementById("mode-register").classList.toggle("active",mode==="register");
-  document.getElementById("auth-title").textContent=mode==="login"?"Büyük Kapı Seni Bekliyor":"Hogwarts'a Katıl";
-  document.getElementById("auth-subtitle").textContent=mode==="login"?"Hogwarts hesabına giriş yap ve büyülü dünyaya katıl.":"Kendi büyülü kimliğini oluştur.";
-  document.getElementById("login-note").textContent=mode==="login"?"Hesabın yok mu? Kayıt Ol seçeneğiyle yeni bir öğrenci veya profesör hesabı oluşturabilirsin.":"Zaten hesabın var mı? Giriş Yap seçeneğine dokun.";
-  hideAlert("login-error");
-  hideAlert("register-error");
-  updateAdminNotice();
+async function handleLogin(e){
+e.preventDefault();hideAlert("login-error");
+const username=document.getElementById("login-username").value.trim();
+const house=document.getElementById("login-house").value;
+const password=document.getElementById("login-password").value;
+if(!username||!password){showAlert("login-error","Lütfen kullanıcı adı ve şifreni gir.");return;}
+if(currentRoleTab==="admin"){
+if(!appState.adminLocked){
+if(password.length<4){showAlert("login-error","Yönetici şifresi en az 4 karakter olmalı.");return;}
+appState.adminAccount={username,password,role:"admin"};
+appState.adminLocked=true;
+showLoader(true);await saveCloudState();showLoader(false);
+enterPortal({username,role:"admin",house:null});return;
 }
-
-function switchRoleTab(role) {
-  currentRoleTab=role;
-  ["student","professor","admin"].forEach(r=>{
-    document.getElementById(`tab-${r}`).classList.toggle("active",r===role);
-  });
-  document.getElementById("house-select-group").style.display=role==="student"?"block":"none";
-  document.getElementById("login-submit-btn").textContent=role==="admin"&&!appState.adminLocked?"👑 Yönetici Oluştur":"✨ Kapıyı Aç";
-  updateAdminNotice();
+if(appState.adminAccount&&appState.adminAccount.username.toLowerCase()===username.toLowerCase()&&appState.adminAccount.password===password){
+enterPortal({username:appState.adminAccount.username,role:"admin",house:null});return;
+}else{showAlert("login-error","Yönetici kullanıcı adı veya şifre hatalı.");return;}
 }
-
-function toggleRegisterHouse() {
-  document.getElementById("register-house-group").style.display=
-    document.getElementById("register-role").value==="student"?"block":"none";
+const found=appState.users.find(u=>u.role===currentRoleTab&&u.username.toLowerCase()===username.toLowerCase()&&u.password===password);
+if(!found){showAlert("login-error","Kullanıcı adı, rol veya şifre hatalı.");return;}
+if(currentRoleTab==="student"&&!==house){showAlert("login-error",Bu öğrenci ${} binasına kayıtlı.);return;}
+enterPortal(found);
+  }function enterPortal(user){
+currentUser=user;
+document.getElementById("login-screen").style.display="none";
+document.getElementById("portal-screen").style.display="block";
+document.getElementById("header-user").style.display="flex";
+const labels={student:🎓 Öğrenci (${}),professor:"🪄 Profesör",admin:"👑 Yönetici"};
+document.getElementById("user-role-label").textContent=${user.username} • ${labels[user.role]};
+document.getElementById("nav-prof-panel").style.display=(user.role==="professor"||user.role==="admin")?"inline-block":"none";
+document.getElementById("nav-admin-panel").style.display=user.role==="admin"?"inline-block":"none";
+document.getElementById("common-room-switcher").style.display=(user.role==="professor"||user.role==="admin")?"block":"none";
+document.getElementById("login-form").reset();
+showSection("great-hall",document.querySelector(".nav-btn"));
+refreshAllViews();
 }
-
-async function handleRegister(event) {
-  event.preventDefault();
-  hideAlert("register-error");
-  const role=document.getElementById("register-role").value;
-  const username=document.getElementById("register-username").value.trim();
-  const house=document.getElementById("register-house").value;
-  const password=document.getElementById("register-password").value;
-  const confirmPassword=document.getElementById("register-password-confirm").value;
-
-  if(!/^[a-zA-Z0-9_çÇğĞıİöÖşŞüÜ-]{3,24}$/.test(username)) {
-    showAlert("register-error","Kullanıcı adı 3-24 karakter olmalı; harf, rakam, _ veya - kullanabilirsin.");
-    return;
-  }
-  if(password.length<4) {
-    showAlert("register-error","Şifre en az 4 karakter olmalı.");
-    return;
-  }
-  if(password!==confirmPassword) {
-    showAlert("register-error","Şifreler eşleşmiyor.");
-    return;
-  }
-  const exists=appState.users.some(u=>String(u.username).toLowerCase()===username.toLowerCase()) ||
-    (appState.adminAccount && String(appState.adminAccount.username).toLowerCase()===username.toLowerCase());
-  if(exists) {
-    showAlert("register-error","Bu kullanıcı adı zaten kullanılıyor.");
-    return;
-  }
-
-  const newUser={
-    id:Date.now(),
-    role,
-    username,
-    house:role==="student"?house:null,
-    password
-  };
-  appState.users.push(newUser);
-  showLoader(true);
-  const saved=await saveCloudState();
-  showLoader(false);
-
-  if(!saved) {
-    appState.users=appState.users.filter(u=>u.id!==newUser.id);
-    try{localStorage.setItem(LOCAL_KEY,JSON.stringify(appState));}catch(_){}
-    showAlert("register-error","Buluta kayıt yapılamadı. İnternet bağlantısını kontrol edip tekrar dene.");
-    return;
-  }
-
-  document.getElementById("register-form").reset();
-  alert("Hesabın oluşturuldu! Şimdi giriş yapabilirsin.");
-  switchAuthMode("login");
-  switchRoleTab(role);
-  document.getElementById("login-username").value=username;
-  if(role==="student") document.getElementById("login-house").value=house;
+function logout(){
+currentUser=null;
+document.getElementById("portal-screen").style.display="none";
+document.getElementById("header-user").style.display="none";
+document.getElementById("login-screen").style.display="flex";
+updateAdminNotice();
 }
+function showSection(id,btn){
+document.querySelectorAll(".section-view").forEach(s=>s.classList.remove("active"));
+document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+const sec=document.getElementById(sec-${id});
+if(sec)sec.classList.add("active");
+if(btn)btn.classList.add("active");
+if(id==="common-room")renderCommonRoom();
+if(id==="admin-panel")renderUsersTable();
+}
+function refreshAllViews(){
+renderGreatHall();renderCommonRoom();
+if(currentUser&&currentUser.role==="admin")renderUsersTable();
+}
+function renderGreatHall(){
+const icons={Gryffindor:"🦁",Slytherin:"🐍",Ravenclaw:"🦅",Hufflepuff:"🦡"};
+const maxPts=Math.max(200,...(h=>Number(appState.points[h])||0));
+document.getElementById("houses-container").innerHTML=(h=>{
+const pts=Number(appState.points[h])||0;
+const pct=Math.max(0,Math.min(100,Math.round((pts/maxPts)*100)));
+return <div class="house-card ${h}"><div class="house-header"><span class="house-name">${icons[h]} ${h}</span></div><div class="house-points">${pts} Puan</div><div class="hourglass-bar"><div class="hourglass-fill" style="width:${pct}%"></div></div></div>;
+}).join("");document.getElementById("logs-container").innerHTML=appState.logs.length
+?appState.logs.slice().reverse().map(l=><div class="feed-item"><div>${escapeHTML(l.text)}</div><div class="feed-meta">${escapeHTML(l.time)}</div></div>).join("")
+:<div class="feed-item">Henüz puan hareketi yok.</div>;
+document.getElementById("announcements-container").innerHTML=appState.announcements.length
+?appState.announcements.slice().reverse().map(a=><div class="feed-item"><strong style="color:var(--gold-light)">${escapeHTML(a.title)}</strong><p style="margin-top:4px">${escapeHTML(a.body)}</p><div class="feed-meta">Yayınlayan: ${escapeHTML()} • ${escapeHTML(a.time)}</div></div>).join("")
+:<div class="feed-item">Henüz duyuru yayınlanmadı.</div>;
+}
+function getActiveRoomHouse(){
+if(!currentUser)return"Gryffindor";
+if(currentUser.role==="student")return ;
+return document.getElementById("admin-room-select").value||"Gryffindor";
+}
+function renderCommonRoom(){
+if(!currentUser)return;
+const h=getActiveRoomHouse();
+const desc={
+Gryffindor:"Cesaretin, atılganlığın ve şövalye ruhunun buluşma noktası.",
+Slytherin:"Hırsın, kurnazlığın ve büyüklüğe giden yolun zindanlardaki kalesi.",
+Ravenclaw:"Zekânın, bilgeliğin ve sınır tanımayan merakın gökyüzü kulesi.",
+Hufflepuff:"Sadakatin, emeğin ve dostluğun sıcak sığınağı."
+};
+document.getElementById("room-banner").className=common-room-banner banner-${h};
+document.getElementById("room-title").textContent=${h} Ortak Salonu;
+document.getElementById("room-desc").textContent=desc[h];
+const msgBox=document.getElementById("room-messages");
+const msgs=appState.messages[h]||[];
+msgBox.innerHTML=msgs.length
+?(m=><div class="feed-item"><strong style="color:var(--gold-light)">${escapeHTML(m.sender)}:</strong> ${escapeHTML(m.text)}<div class="feed-meta">${escapeHTML(m.time)}</div></div>).join("")
+:<div class="feed-item">Bu ortak salonda henüz mesaj yok. İlk mesajı sen yaz!</div>;
+msgBox.scrollTop=msgBox.scrollHeight;
+const members=appState.users.filter(u=>u.role==="student"&&===h);
+document.getElementById("room-members").innerHTML=members.length
+?(m=><div class="feed-item">🧙 <strong>${escapeHTML(m.username)}</strong></div>).join("")
+:<div class="feed-item">Bu binada henüz kayıtlı öğrenci bulunmuyor.</div>;
+}
+async function sendRoomMessage(e){
+e.preventDefault();if(!currentUser)return;
+const inp=document.getElementById("room-msg-input");
+const text=inp.value.trim();if(!text)return;
+const h=getActiveRoomHouse();
+const time=new Date().toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"});
+appState.messages[h].push({sender:${currentUser.username}${currentUser.role!=="student"?" (Yetkili)":""},text,time});
+if(appState.messages[h].length>50)appState.messages[h]=appState.messages[h].slice(-50);
+inp.value="";renderCommonRoom();await saveCloudState();
+  }async function updateHousePoints(e){
+e.preventDefault();
+if(!currentUser||(currentUser.role!=="professor"&&currentUser.role!=="admin"))return;
+const house=document.getElementById("pts-house").value;
+const amount=parseInt(document.getElementById("pts-amount").value,10);
+const reason=document.getElementById("pts-reason").value.trim();
+if(isNaN(amount)||amount===0||!reason)return;
+appState.points[house]=(Number(appState.points[house])||0)+amount;
+const sign=amount>0?+${amount}:${amount};
+const time=new Date().toLocaleString("tr-TR",{dateStyle:"short",timeStyle:"short"});
+appState.logs.push({text:${house} binasına ${sign} puan (${reason}) — ${currentUser.username},time});
+e.target.reset();refreshAllViews();
+showLoader(true);await saveCloudState();showLoader(false);
+alert(${house} binası için ${sign} puan işlendi!);
+}
+async function postAnnouncement(e){
+e.preventDefault();
+if(!currentUser||(currentUser.role!=="professor"&&currentUser.role!=="admin"))return;
+const title=document.getElementById("ann-title").value.trim();
+const body=document.getElementById("ann-body").value.trim();
+if(!title||!body)return;
+const time=new Date().toLocaleString("tr-TR",{dateStyle:"short",timeStyle:"short"});
+appState.announcements.push({title,body,author:currentUser.username,time});
+e.target.reset();refreshAllViews();
+showLoader(true);await saveCloudState();showLoader(false);
+alert("Duyuru Büyük Salon'da yayınlandı!");
+}
+function toggleNewUserHouse(){
+document.getElementById("new-user-house-group").style.display=document.getElementById("new-user-role").value==="student"?"block":"none";
+}
+async function createNewUser(e){
+e.preventDefault();if(!currentUser||currentUser.role!=="admin")return;
+const role=document.getElementById("new-user-role").value;
+const username=document.getElementById("new-user-name").value.trim();
+const house=document.getElementById("new-user-house").value;
+const password=document.getElementById("new-user-pass").value;
+const exists=appState.users.some(u=>u.username.toLowerCase()===username.toLowerCase())||(appState.adminAccount&&appState.adminAccount.username.toLowerCase()===username.toLowerCase());
+if(exists){alert("Bu kullanıcı adı zaten mevcut!");return;}
+appState.users.push({id:(),role,username,house:role==="student"?house:null,password});
+e.target.reset();toggleNewUserHouse();renderUsersTable();
+showLoader(true);await saveCloudState();showLoader(false);
+alert("Yeni hesap başarıyla oluşturuldu.");
+}
+function renderUsersTable(){
+const tbody=document.getElementById("users-table-body");
+tbody.innerHTML=appState.users.length
+?(u=><tr><td>${escapeHTML(u.username)}</td><td>${u.role==="student"?🎓 Öğrenci (${escapeHTML()}):"🪄 Profesör"}</td><td><button class="btn-danger" style="padding:6px 10px;font-size:.8rem" onclick="deleteUser(${})">Sil</button></td></tr>).join("")
+:<tr><td colspan="3" style="color:var(--text-muted)">Kayıtlı kullanıcı bulunmuyor.</td></tr>;
+}
+async function deleteUser(id){
+if(!currentUser||currentUser.role!=="admin")return;
+if(!confirm("Bu hesabı silmek istediğine emin misin?"))return;
+appState.users=appState.users.filter(u=>!==id);
+renderUsersTable();showLoader(true);await saveCloudState();showLoader(false);
+}
+window.addEventListener("DOMContentLoaded",()=>{loadLocalState();updateAdminNotice();loadCloudState();});
+
+https://utiluse.com/code-playground/#code=dVPBbtswDP0Vwt2hQWM3SZugcNNcugLF0F2W7pZDFYmOtcqSJ8lpvCD_PlpymnbAbMCAqUfyvUdqn5RJnswrJjVwxZy7WyWcWbFKFisNMC_Hi0dUygzhp5eqcTi_pFA4qhcPQnp4fP7-NIT75RKYFvCNbdmSW1n7DJ5LBIuuUR6aWjCPDpiD1jTg2xqz-WUdC60b740GKaj32mtqfa8kf4WKmsWzvmGEmMYTJGbPLzvmi2SYcJKxNqKFfYetmN1IncPotvurmRBSb3IYz-pdiKzNLnXyTwiujRVoUwqFo0rqtES5KT3hR6NtGaJCulqxNoeNlSIWVYxjKj1WLgeO2qMN8cJonxaskorQrnUESBs5BMe0Sx1aWQQYN8rYHM7GnN4YWjP-urGm0YLixXUxQaT4YaWzbiJR2GdMERPf9U2u6x1Mbt5FdsJIBQWdUVLAGV7hSLAPp6llQjakYDzpsyq2S9-k8GUOV9ejECQK5Rj2J1fp7ZpEreQjUuvOWiBkTcCjuGn38FtQUuPJ1GwagP3Yo6yeapzXP9SOek5jJFqnWXYkcpC6JG_9aQRvfbvZKBY9cjqa9snJcTErZtEX3ljXAWsj-5m-c81Ls0VL-j7n3kzZdEaSaAt_0RYq9HSVaIEd3AVB3GjngdaW_oXhTUXLkv1u0LZLVMi9seer5Cys9YDgK_1_ULgeg4yMeNgS4EnSemnsjkLHVTKE8wHcLaKrkcXFRdBF9TOPO39P5lAqcXkJ14wM_rKPyMNL75SmdcFMmc3HwjTWgBoCI1s1vsFXutPng8ybJ8OZwmdZ4dJbGhFxOHRSwicacCr4A5loO6nJ4S8
